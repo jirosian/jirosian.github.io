@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
 	<title>Sayaka Gozkara</title>
     <link rel="stylesheet" href="index.css">
@@ -10,21 +11,45 @@
 </head>
 
 <body onload="setup()">
+    <header>
 	<nav class="navbar background">
-		<ul class="nav-list">
-			
-			<h1 class="top">Sayaka Gozkara</h1>
-			
+		<ul class="nav-list">		
+			<h1 class="top">Sayaka Gozkara</h1>			
 			<li><a href="#game">Game</a></li>		
 			<li><a href="#webpage">Web Page</a></li>
+            <li><a href="#petsmart">Web App</a></li>
             <li><a href="#Certification">Certification</a></li>
             <li><a href="#About">About</a></li>
 		</ul>
-
 	</nav>
-
+        <div class="menu">
+            <input type="checkbox" id="menu-btn-check">
+            <label for="menu-btn-check" class="menu-btn"><span></span></label>
+            <div class="menu-content">
+                <ul>
+                    <li><a href="#game">Game</a></li>
+                    <li><a href="#webpage">Web Page</a></li>
+                    <li><a href="#Certification">Certification</a></li>
+                    <li><a href="#About">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+   
     <section class="gameSection" id="game">
-        <h1 class="mainTitle">Why Did the Chicken Cross the Road?</h1>
+        <h1 class="mainTitle">Project1: Why Did the Chicken Cross the Road?</h1>
+        
+        <h2>Overview</h2>     
+            <p>The intent of this game is to earn score by catching the small baby of the bird while avoiding a car running.</li>
+            <p>If the baby is hit by the car, score decreases but if the player is hit by the car, game is over.</p>
+        
+        <h2>First Solo Porject with JavaScript</h2>
+            <p>Implemented 2D game by using canvas in JavaScript.</p>
+            <p>Designed the original characters and the stage with  canvas</p>
+            <p>Successfully impelemented player's controller with key listener's event</p>
+            <p>Animation was impelemented by applying loop function.</p>
+ 
+
         <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas> 
         <button onclick()=""></button>
         <h2 id="scoreOutput" style="text-align: center;">0</h2>
@@ -34,19 +59,33 @@
 		<div class="box-main">
 			<div class="secondHalf">
                 <h1 class="text-big" id="webpage">
-					Trip Web Page
+					Project2: Trip Web Page
 				</h1>
-				<p class="text-small" >
-					My first HTML5/CSS project with a team. <br>
+
+                <h2 style="color: aliceblue; text-align: center;">Overview</h2>
+                    <p class="text-small" >
                     An informative travel web page that introduces various type of 
-                    hidden travel spots. <br>
-                    Helps people to decide the next destination for trip. <br>
-                    
-				</p>
-                <a href="https://admirable-monstera-2df22d.netlify.app/" class="imageLink" style=" width: 300px"><img src="tripImage.png" alt="TripImage" class="tripImage"></a>
+                    hidden travel spots to helps people to decide the next destination.</p>
+                    <h2 style="color: aliceblue; text-align: center;">First Team Project with HTML5/CSS</h2>
+                    <p class="text-small">Well Designed with up to 3 colors and good images applying responsive web design that is usable on a smartphone.</p>
+                <a href="1030project/index.html" class="imageLink" style=" width: 300px"><img src="tripImage.png" alt="TripImage" class="tripImage"></a>
 			</div>
 		</div>
 	</section>
+
+    <section class="thirdsection" id="petsmart">
+		<div class="paras">
+			<h1 class="sectionTag text-big"  style="color:#9cc;">Project3: Pet Smart </h1>          
+			<p class="sectionSubTag text-small" style="color:#9cc;">
+				Web Application with React
+			</p>
+		</div>
+
+		<div class="thumbnail">
+			<a href="https://sayaka.netlify.app"><img src="img.png" alt="Jump to the app"  style="color:#9cc;;"></a>
+		</div>
+	</section>
+
 
 	<section class="section" id="Certification">
 		<div class="paras">
@@ -57,7 +96,7 @@
 		</div>
 
 		<div class="thumbnail">
-			<a href="https://www.freecodecamp.org/certification/jirosian/responsive-web-design"><img src="img.png" alt="Jump to the page"  style="color:#9cc;;"></a>
+			<a href="https://www.freecodecamp.org/certification/jirosian/responsive-web-design"><img src="img.png" alt="Jump the certification"  style="color:#9cc;;"></a>
 		</div>
 	</section>
 
@@ -68,14 +107,10 @@
 				<h1 class="text-big" id="About" style="color:whitesmoke;">Sayaka Gozkara</h1>
 				
 				<p class="text-small" style="color:whitesmoke;">
-                    Born and raised in Sapporo Japan. After graduated from an univiersity in Sapporo, 
-                    started to work as a beauty advisor for 2 years. After working for several cosmetic companies,
-                    moved to Canada for new opportunities.  
-                    In 2020, started to attend Langara college for studying computer studies.
-                    After 2 years's attending, finishes school.
+                    Japanese by birth. Worked for various cosmetic brands as a beauty advisor.
+                    In 2020, started to attend Langara College and was enrolled in the diploma program in computer studies.
+                    Comprehensive knowledge of computer science, programming, algorithms, and data structures acquired. 
 				</p>
-
-
 			</div>
 		</div>
 	</section>
@@ -87,6 +122,7 @@
 
 
 	</footer>
+
    
 </body>
 
