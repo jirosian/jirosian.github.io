@@ -1,4 +1,5 @@
 
+
 	* {
 		margin: 0;
 		padding: 0;
@@ -16,11 +17,12 @@
         padding-bottom:70px;
         background-color:aliceblue;
         color: #091f36;
+        text-align: center;
     }
 
     .mainTitle {
         text-align: center;
-        font-size: 45px;
+        font-size: 30px;
     }
 
     #myCanvas {
@@ -70,8 +72,10 @@
 	}
 
 	.nav-list li a {
+        display:block;
 		text-decoration: none;
 		color: white;
+        margin-right: 35px;
 	}
 
 	.nav-list li a:hover {
@@ -83,6 +87,93 @@
 		text-align: right;
 	}
 
+    .menu-btn {
+        position: fixed;
+        top: 30px;
+        right: 10px;
+        display: none;
+        height: 60px;
+        width: 60px;
+        justify-content: center;
+        align-items: center;
+        z-index: 90;
+        background-color: white;
+        border-radius: 10px;
+        }
+    .menu-btn:hover {
+        cursor: pointer;
+    }
+    .menu-btn span,
+    .menu-btn span:before,
+    .menu-btn span:after {
+        content: "";
+        display: block;
+        height: 3px;
+        width: 25px;
+        border-radius: 3px;
+        background-color: #0f2862;
+        position: absolute;
+    }
+    .menu-btn span:before {
+        bottom: 8px;
+    }
+    .menu-btn span:after {
+        top: 8px;
+    }
+    #menu-btn-check {
+        display: none;
+    }
+        
+    #menu-btn-check:checked ~ .menu-btn span {
+        background-color: rgba(
+        255,
+        255,
+        255,
+        0
+        ); 
+    }
+    #menu-btn-check:checked ~ .menu-btn span::before {
+        bottom: 0;
+        transform: rotate(45deg);
+    }
+    #menu-btn-check:checked ~ .menu-btn span::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    .menu-content {
+        width: 80%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 100%;  
+        z-index: 80;
+        background-color: #0f2862;
+        transition: all 0.5s; 
+    }
+    .menu-content ul {
+        padding: 70px 10px 0;
+    }
+    .menu-content ul li {
+        border-bottom: solid 1px #ffffff;
+        list-style: none;
+    }
+    .menu-content ul li a {
+        display: block;
+        width: 100%;
+        font-size: 15px;
+        box-sizing: border-box;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 9px 15px 10px 0;
+        position: relative;
+    }
+        
+    #menu-btn-check:checked ~ .menu-content {
+        left: 30%; 
+    }
+
+    
 	#search {
 		padding: 5px;
 		font-size: 17px;
@@ -96,6 +187,7 @@
         object-fit: scale-down;
         margin: 0 auto;
         display: block;
+       
     }
 
 	.About {
@@ -112,7 +204,7 @@
 
 	.secondsection {
 		background-color: #4f5f76;
-		height: 400px;
+		height: 600px;
 	}
 
 	.box-main {
@@ -149,7 +241,7 @@
         padding-top: 40px;
 		font-family: 'Piazzolla', serif;
 		font-weight: bold;
-		font-size: 35px;
+		font-size: 30px;
         color: aliceblue;
         text-align: center;    
  
@@ -187,6 +279,15 @@
 	.btn-sm {
 		padding: 6px 10px;
 		vertical-align: middle;
+	}
+
+    .thirdsection {
+		height: 400px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: auto;
+        background-color:aliceblue;
 	}
 
 	.section {
@@ -234,4 +335,137 @@
 
     .imageLink:hover img, .logo {
         opacity: 0.5;
+    }
+
+    .menu-btn {
+        overflow: hidden; 
+      }
+      
+    .menu-content, #menu-btn-check {
+        overflow: hidden;
+      
+    }
+
+    @media screen and (max-width:390px) {
+        .nav-list li a {
+            display: none;     
+        }
+
+        .menu-btn {
+            position: fixed;
+            top: 30px;
+            right: 10px;
+            display: flex;
+            height: 60px;
+            width: 60px;
+            justify-content: center;
+            align-items: center;
+            z-index: 90;
+            background-color: white;
+            border-radius: 10px;
+            }
+            .menu-btn:hover {
+            cursor: pointer;
+            }
+            /* 三本線の実装 */
+            .menu-btn span,
+            .menu-btn span:before,
+            .menu-btn span:after {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 25px;
+            border-radius: 3px;
+            background-color: #0f2862;
+            position: absolute;
+            }
+            .menu-btn span:before {
+            bottom: 8px;
+            }
+            .menu-btn span:after {
+            top: 8px;
+            }
+            /* チェックボックスを非表示にする */
+            #menu-btn-check {
+            display: none;
+            }
+            
+            #menu-btn-check:checked ~ .menu-btn span {
+            background-color: rgba(
+            255,
+            255,
+            255,
+            0
+            ); /*メニューオープン時は真ん中の線を透明にする*/
+            }
+            
+            /* メニューを開いている時はハンバーガーボタンが×になる */
+            #menu-btn-check:checked ~ .menu-btn span::before {
+            bottom: 0;
+            transform: rotate(45deg);
+            }
+            #menu-btn-check:checked ~ .menu-btn span::after {
+            top: 0;
+            transform: rotate(-45deg);
+            }
+            /* =================
+            メニュー部分の実装
+            ================= */
+            
+            .menu-content {
+            width: 80%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+               /* メニューを外に出しておく */
+            left: 100%;  
+            z-index: 80;
+            background-color: #0f2862;
+            transition: all 0.5s; /*アニメーションを滑らかにする*/
+            }
+            .menu-content ul {
+            padding: 70px 10px 0;
+            }
+            .menu-content ul li {
+            border-bottom: solid 1px #ffffff;
+            list-style: none;
+            }
+            .menu-content ul li a {
+            display: block;
+            width: 100%;
+            font-size: 15px;
+            box-sizing: border-box;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 9px 15px 10px 0;
+            position: relative;
+            }
+            
+            #menu-btn-check:checked ~ .menu-content {
+            left: 30%; /*メニューを画面内へ動かす*/
+            }
+
+            #myCanvas {
+                width: 350px;
+                height: auto;
+            }
+
+            .paras {
+                position: absolute;   
+            }
+
+            .thumbnail img {
+                position: relative;
+                top: 100px;   
+            }
+
+            .firstHalf {
+                position: absolute;
+               
+               
+            }
+
+            .box-main img {
+                filter:brightness(40%);
+            }
     }
