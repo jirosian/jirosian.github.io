@@ -1,6 +1,4 @@
-
-
-	* {
+* {
 		margin: 0;
 		padding: 0;
 	}
@@ -346,7 +344,7 @@
       
     }
 
-    @media screen and (max-width:390px) {
+    @media screen and (max-width:500px) {
         .nav-list li a {
             display: none;     
         }
@@ -367,7 +365,7 @@
             .menu-btn:hover {
             cursor: pointer;
             }
-            /* 三本線の実装 */
+            /* Three line implementation */
             .menu-btn span,
             .menu-btn span:before,
             .menu-btn span:after {
@@ -385,7 +383,7 @@
             .menu-btn span:after {
             top: 8px;
             }
-            /* チェックボックスを非表示にする */
+            /* Hide checkbox */
             #menu-btn-check {
             display: none;
             }
@@ -396,10 +394,10 @@
             255,
             255,
             0
-            ); /*メニューオープン時は真ん中の線を透明にする*/
+            ); 
             }
             
-            /* メニューを開いている時はハンバーガーボタンが×になる */
+            /* Appear cross button while opening burger button */
             #menu-btn-check:checked ~ .menu-btn span::before {
             bottom: 0;
             transform: rotate(45deg);
@@ -409,7 +407,7 @@
             transform: rotate(-45deg);
             }
             /* =================
-            メニュー部分の実装
+            Implementation for menu
             ================= */
             
             .menu-content {
@@ -417,11 +415,11 @@
             height: 100%;
             position: fixed;
             top: 0;
-               /* メニューを外に出しておく */
+               /* Take menu outside */
             left: 100%;  
             z-index: 80;
             background-color: #0f2862;
-            transition: all 0.5s; /*アニメーションを滑らかにする*/
+            transition: all 0.5s; /* Make animation look smooth */
             }
             .menu-content ul {
             padding: 70px 10px 0;
@@ -442,7 +440,7 @@
             }
             
             #menu-btn-check:checked ~ .menu-content {
-            left: 30%; /*メニューを画面内へ動かす*/
+            left: 30%; /* Add motion to menu*/
             }
 
             #myCanvas {
