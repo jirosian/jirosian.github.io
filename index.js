@@ -37,21 +37,25 @@ canvas = document.getElementById("myCanvas");
 	gy = randomGoal();
 	ex = randomEnemy();
 　  ey =  randomEnemy();
-		ex2 =  undefined;
-		ey2 =  undefined;
-		ex3 =  undefined;
-		ey3 =  undefined;
-		ex4 =  undefined;
-		ey4 =  undefined;
+	ex2 =  93.75; 
+	ey2 =  156.25;
 
-  goalArray[0] = null;
-  countNum = 0;
-  count = 0;
-	bx = -100;
-document.getElementById('scoreOutput').innerHTML = "Score: " + count;
-gameState = State.play;
+    //what is this for?
+	ex3 =  90;
+	ey3 =  90;
+	ex4 =  120;
+	ey4 =  120;
+
+    goalArray[0] = null;
+    countNum = 0;
+    count = 0;
+    bx = -100;
+    document.getElementById('scoreOutput').innerHTML = "Score: " + count;
+    gameState = State.play;
+
 draw();
 }
+
 
 //choosing coordinate of enemy randomly
 function randomEnemy(){
@@ -70,6 +74,7 @@ function randomGoal(){
 	return newArray[Math.floor(Math.random()*newArray.length)];
  }
 
+
 //decorating vertical roads.
 function designRoad(x,y){
 	ctx.save();
@@ -79,8 +84,8 @@ function designRoad(x,y){
 	ctx.fill();
 
 	ctx.beginPath();
-　ctx.fillStyle = "white";
-  ctx.rect(x+20,y+31.25,25,5);
+    ctx.fillStyle = "white";
+    ctx.rect(x+20,y+31.25,25,5);
 	ctx.fill();
 
   ctx.restore();
@@ -95,7 +100,7 @@ function designRoad2(x,y){
 	ctx.fill();
 
 	ctx.beginPath();
-　ctx.fillStyle = "white";
+    ctx.fillStyle = "white";
 	ctx.rect(x+31.25,y+15,5,25);
 	ctx.fill();
 
@@ -156,7 +161,7 @@ function designSignal(x,y){
 	ctx.fill();
 
 	ctx.beginPath();
-	ctx.fillStyle = "LightGoldenRodYellow";
+	ctx.fillStyle = "yellow";
 	ctx.arc(x+37,y+5, 7,0, 2*Math.PI)
 	ctx.fill();
 
@@ -214,7 +219,6 @@ function draw(event) {
 			drawEnemy(ex,ey);
    		makeGrid();
 
-
   if(bombArray[0]!=null){
 		drawMine(bx,by)
 		code = null;
@@ -223,6 +227,7 @@ function draw(event) {
 	if(goalArray[0]!=null)
 		drawEnemy(ex2,ey2);
 	}
+    
   if(countNum==2){
 		drawEnemy(ex3,ey3);
 	}
@@ -342,7 +347,6 @@ function drawPlayer(x,y) {
  ctx.stroke();
  ctx.restore();
 
-
 }
 
 
@@ -400,7 +404,7 @@ function drawMine(x,y){
 	ctx.lineTo(-6,-17);
 	ctx.stroke();
 
-　ctx.beginPath();
+    ctx.beginPath();
 	ctx.fillStyle = "white";
 	ctx.arc(8,-8, 10,0, 2*Math.PI)
   ctx.fill();
@@ -494,9 +498,8 @@ addEventListener("keydown",function(event) {
 		countNum+=1;
 	}
 
-
   //minus the score and change the position of enemy when the you
-  if(ex==gx&&ey==gy){
+  if(ex==gx&&ey==gy || ex2==gx&&ey2==gy){
 		gx=undefined;
 		gy=undefined;
 		gx=randomGoal();
@@ -551,77 +554,46 @@ function movingEnemy(){
 }
 
 animateInterval = setInterval( function()    {
-	  movingEnemy();
+	      movingEnemy();
 
-		if(bx==ex&&by==ey){
-		return bombHit1();
-		}else if(bx==ex2&&by==ey2){
-		return bombHit2();
-		}else if(bx==ex3&&by==ey3){
-		return bombHit3();
-		}else if(bx==ex4&&by==ey4){
-		return bombHit4();
+		if(bx==ex&&by==ey  || ex2==gx&&ey2==gy)
+			return bombHit1();
+
+		if(ex==gx&&ey==gy || ex2==gx&&ey2==gy)
+			return goalHit();
+
+		if(sx==ex && sy==ey || sx==ex2&&sy==ey2){
+			gameState = State.gameOver;
+			enemyHitToPlayer();
+			return ;
 		}
 
-		if(ex==gx&&ey==gy){
-		return goalHit();
-		}else if(ex2==gx&&ey2==gy){
-			return goalHit()
-		}else if(ex3==gx&&ey3==gy){
-			return goalHit();
-		}else if(ex4==gx&&ey4==gy){
-			return goalHit();
+		if(gameState === State.gameOver){
+				return;
 		}
-
-if(sx==ex && sy==ey){
-gameState = State.gameOver;
-enemyHitToPlayer();
-return ;
-}else if(sx==ex2&&sy==ey2){
-gameState = State.gameOver;
- enemyHitToPlayer();
- return;
-}else if(sx==ex3&&sy==ey3){
-gameState = State.gameOver;
-enemyHitToPlayer();
- return;
-}else if(sx==ex4&&sy==ey4){
-gameState = State.gameOver;
-enemyHitToPlayer();
- return;
-}
-
-if(gameState === State.gameOver){
-		return;
-}
 
 },400);
-
-
 
 function enemyHitToPlayer(){
 	clearInterval(animateInterval);
 	drawGameOver();
 	animateInterval = undefined;
-
 	}
 
 
 function goalHit(x,y){
-	gx=undefined;
-	gy=undefined;
+	//gx=undefined;
+	//gy=undefined;
 	gx=randomGoal();
 	gy=randomGoal();
 	count-=100;
 	document.getElementById('scoreOutput').innerHTML = "Score: " + count;
 }
 
-function bombHit1(x,y){
+function bombHit1(){
 	bx=-100;
 	by=-100;
-	ex=-100;
-	ey=-100;
-	count+=100;
+	count-=100;
 	document.getElementById('scoreOutput').innerHTML = "Score: " + count;
 }
 
@@ -650,7 +622,6 @@ function bombHit4(x,y){
 	count+=100;
 	document.getElementById('scoreOutput').innerHTML = "Score: " + count;
 }
-
 
 let playerInfo = {
 	positionX:sx,
